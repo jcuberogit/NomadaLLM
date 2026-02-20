@@ -1,0 +1,98 @@
+Metadata-Version: 2.4
+Name: nomadaguard
+Version: 1.0.0
+Summary: Truth Detection SDK - Distinguish FACT from FAKE. Powered by NomadaLLM.
+Author-email: Paradigm Store <support@nomadahealth.com>
+License: Proprietary
+Project-URL: Homepage, https://nomadaguard.nomadahealth.com
+Project-URL: Documentation, https://docs.nomadahealth.com/nomadaguard
+Project-URL: Repository, https://github.com/paradigmstore/nomadaguard
+Keywords: truth-detection,fake-news,scam-detection,fraud,llm,ai
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Security
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: nomadallm>=0.1.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.21; extra == "dev"
+
+# NomadaGuard
+
+**Truth Detection SDK - Distinguish FACT from FAKE**
+
+Powered by NomadaLLM, NomadaGuard provides on-device, privacy-first detection of:
+- Scam messages
+- Fake news
+- Manipulation patterns
+- Logical fallacies
+- Fraudulent content
+
+## Requirements
+
+- **NomadaLLM Pro or Enterprise license** required
+- Python 3.10+
+
+## Installation
+
+```bash
+pip install nomadaguard
+```
+
+## Quick Start
+
+```python
+from nomadaguard import NomadaGuard
+
+# Initialize with your NomadaLLM Pro license
+guard = NomadaGuard(license_key="nllm_pro_your_key_here")
+
+# Analyze text
+result = guard.analyze("You won $1,000,000! Click here to claim!")
+
+print(f"Truth Score: {result.truth_score}/100")
+print(f"Classification: {result.classification}")
+print(f"Is Scam: {result.is_fake()}")
+```
+
+## Features
+
+### Pattern-Based Detection
+- **Manipulation Patterns**: Urgency, fear, greed, conspiracy
+- **Logical Fallacies**: Ad hominem, straw man, false dichotomy
+- **Source Credibility**: Domain reputation analysis
+
+### LLM Deep Analysis
+```python
+# Enable deep analysis for more accurate detection
+result = guard.analyze(text, deep_analysis=True)
+```
+
+## Truth Classification
+
+| Score | Classification |
+|-------|----------------|
+| 90-100 | VERIFIED_FACT |
+| 70-89 | LIKELY_TRUE |
+| 40-69 | UNCERTAIN |
+| 20-39 | LIKELY_FALSE |
+| 0-19 | FAKE |
+
+## License
+
+NomadaGuard requires a NomadaLLM Pro ($29/mo) or Enterprise ($99/mo) license.
+
+Get your license at: https://nomadallm.nomadahealth.com
+
+## Support
+
+- Email: support@nomadahealth.com
+- Docs: https://docs.nomadahealth.com/nomadaguard
